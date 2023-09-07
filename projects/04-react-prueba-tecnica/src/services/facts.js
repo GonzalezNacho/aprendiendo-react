@@ -6,12 +6,3 @@ export const getRandomFact = async () => {
     const { fact } = data
     return fact
 }
-
-export const getImageUrlWhitTrheeFirstFacts = async ({ fact }) => {
-    const threeFirtsWord = fact.split(' ', 3).join(' ')
-        
-    const res = await fetch(`https://cataas.com/cat/says/${threeFirtsWord}?json=true`)
-    const response = await res.json()
-    const { url } = response
-    return url
-}
