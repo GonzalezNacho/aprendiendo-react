@@ -38,19 +38,23 @@ function useSearch() {
 
 function App() {
 
-  const { movies } = useMovies()
   const { search, updateSearch, error } = useSearch()
+  const { movies, getMovies } = useMovies({ search })
   
+    const handleSubmit = (event) => {
+      event.preventDefault()
+      getMovies()
+    }
 
   const handleChange = (event) => {
     updateSearch(event.target.value)
   }
 
   return (
-    <div className='page'>
+    <div className='page' >
       <header>
         <h1>Buscador de peliculas</h1>
-        <form className='form'>
+        <form className='form' onSubmit={handleSubmit}>
           <input onChange={handleChange} value={search} type="text" placeholder='Avengers, Star Wars, The Matrix ...'/>
           <button type='submit'>Buscar</button>
         </form>
