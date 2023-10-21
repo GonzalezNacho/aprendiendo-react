@@ -16,7 +16,7 @@ export function useMovies ({search, sort}) {
                 setError(null)
                 previusSearch.current = search
                 const newMovies = await searchMovies({search})
-                setMovies(newMovies=== undefined ? [] : newMovies)
+                setMovies(newMovies ?? [])
             } catch (e) {
                 setError(e.message)
             } finally {
